@@ -258,7 +258,7 @@ function ManageUsers({ user, setUser }) {
             </TableContainer>
             
             <TablePagination
-              rowsPerPageOptions={[5, 10]}
+              rowsPerPageOptions={[3, 5, 7]}
               component="div"
               count={users.length}
               rowsPerPage={rowsPerPage}

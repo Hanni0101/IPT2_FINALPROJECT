@@ -237,7 +237,7 @@ function AddProduct({ user, setUser }) {
               </Table>
             </TableContainer>
             <TablePagination
-              rowsPerPageOptions={[5, 10]}
+              rowsPerPageOptions={[3, 5, 7]}
               component="div"
               count={products.length}
               rowsPerPage={rowsPerPage}

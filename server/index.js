@@ -10,9 +10,15 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect('mongodb://localhost:27017/SIZZLE')
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('MongoDB connection error:', err))
+// mongoose.connect('mongodb://localhost:27017/SIZZLE')
+//   .then(() => console.log('Connected to MongoDB'))
+//   .catch(err => console.error('MongoDB connection error:', err))
+
+mongoose.connect("mongodb+srv://Hannro:HannroDB1@ipt2.ewsjgo5.mongodb.net/Sizzle?retryWrites=true&w=majority&appName=IPT2")
+  .then(() => console.log('MongoDB connected!'))
+  .catch(err => console.error('MongoDB connection error:', err));
+
+
 
 app.post('/api/users', async (req, res) => {
   try {
