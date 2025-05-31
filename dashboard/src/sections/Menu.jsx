@@ -1,76 +1,9 @@
 import { useState, useEffect } from 'react'
 import './Menu.css'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
-import beefSinigang from '../assets/BEEF SINIGANG.png'
-import chickenShanghai from '../assets/CHICKEN SHANGHAI.png'
-import seafoodSinigang from '../assets/SEAFOOD SINIGANG.png'
-import sizzlingCrispyPorkKareKare from '../assets/SIZZLING CRISPY PORK KARE-KARE.png'
-import sizzlingCrispySisig from '../assets/SIZZLING CRSIPY SISIG.png'
-import smoresBiscoff from '../assets/SMORES BISCOFF.png'
-import turonAlaMode from '../assets/TURON ALA MODE.png'
-import wagyuCubes from '../assets/WAGYU CUBES.png'
-
-const defaultProducts = [
-  {
-    _id: 'default1',
-    Name: 'Beef Sinigang',
-    Description: 'Classic Filipino sour soup with tender beef and fresh vegetables.',
-    Price: 320,
-    Photo: beefSinigang
-  },
-  {
-    _id: 'default2',
-    Name: 'Chicken Shanghai',
-    Description: 'Crispy fried spring rolls filled with savory chicken.',
-    Price: 180,
-    Photo: chickenShanghai
-  },
-  {
-    _id: 'default3',
-    Name: 'Seafood Sinigang',
-    Description: 'A medley of seafood in a tangy tamarind broth.',
-    Price: 350,
-    Photo: seafoodSinigang
-  },
-  {
-    _id: 'default4',
-    Name: 'Sizzling Crispy Pork Kare-Kare',
-    Description: 'Sizzling pork in peanut sauce with vegetables.',
-    Price: 340,
-    Photo: sizzlingCrispyPorkKareKare
-  },
-  {
-    _id: 'default5',
-    Name: 'Sizzling Crispy Sisig',
-    Description: 'Chopped pork, onions, and chili on a sizzling plate.',
-    Price: 260,
-    Photo: sizzlingCrispySisig
-  },
-  {
-    _id: 'default6',
-    Name: 'Smores Biscoff',
-    Description: 'Gooey marshmallow and chocolate with Biscoff spread.',
-    Price: 120,
-    Photo: smoresBiscoff
-  },
-  {
-    _id: 'default7',
-    Name: 'Turon Ala Mode',
-    Description: 'Banana spring roll with ice cream on top.',
-    Price: 110,
-    Photo: turonAlaMode
-  },
-  {
-    _id: 'default8',
-    Name: 'Wagyu Cubes',
-    Description: 'Tender wagyu beef cubes, grilled to perfection.',
-    Price: 450,
-    Photo: wagyuCubes
-  }
-]
 
 function Menu({ user }) {
-  const [products, setProducts] = useState(defaultProducts)
+  const [products, setProducts] = useState([])
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [quantity, setQuantity] = useState(1)
@@ -79,9 +12,9 @@ function Menu({ user }) {
     fetch('http://localhost:5000/api/menu')
       .then(res => res.json())
       .then(data => {
-        setProducts([...defaultProducts, ...data])
+        setProducts(data)
       })
-      .catch(() => setProducts(defaultProducts))
+      .catch(() => setProducts([]))
   }, [])
 
   const openOrderModal = (product) => {
