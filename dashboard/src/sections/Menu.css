@@ -1,0 +1,235 @@
+.menu-section {
+  width: 100%;
+  padding: clamp(1rem, 4vw, 3rem) 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-section h2 {
+  margin-bottom: clamp(0.5rem, 1vw, 1rem);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #000;
+}
+
+.menu-section p {
+  margin-bottom: clamp(1rem, 2vw, 2rem);
+  color: #444;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+.menu-login-warning {
+  margin-bottom: clamp(1rem, 2vw, 2rem);
+  color: #c00;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(2rem, 2vw, 3rem);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.menu-card {
+  background: #fff;
+  border-radius: clamp(8px, 1vw, 16px);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  transition: box-shadow 0.2s;
+  min-width: 0;
+}
+
+.menu-card:hover {
+  box-shadow: 0 4px 18px rgba(0,0,0,0.13);
+}
+
+.menu-img-wrap {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #f0f0f0;
+  border-radius: clamp(6px, 0.7vw, 12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: clamp(0.7rem, 1vw, 1.2rem);
+}
+
+.menu-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.menu-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.menu-info h3 {
+  margin: 0 0 0.3em 0;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-weight: 600;
+  color: #222;
+}
+
+.menu-desc {
+  color: #666;
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  margin-bottom: 0.5em;
+  min-height: 2.5em;
+}
+
+.menu-price {
+  font-weight: 700;
+  color: #e67e22;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+}
+
+.menu-empty {
+  grid-column: 1/-1;
+  text-align: center;
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.menu-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  width: 100%;
+}
+
+.menu-price {
+  font-weight: 700;
+  color: #e67e22;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  text-align: left;
+}
+
+.menu-order-btn {
+  background: #e67e22;
+  border: none;
+  border-radius: 50%;
+  padding: 0.4em 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.menu-order-btn:hover {
+  background: #cf711f;
+}
+
+.menu-order-btn svg {
+  color: #fff;
+  font-size: 1.5em;
+}
+
+.order-modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+.order-modal {
+  background: #fff;
+  color: #000;
+  padding: 2rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  min-width: 320px;
+  max-width: 350px;
+  width: 350px;
+  min-height: 520px;
+  max-height: 520px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  position: relative;
+}
+.order-modal-content {
+  width: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.order-modal-actions {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.order-modal img {
+  width: 260px;
+  height: 180px;
+  max-width: 260px;
+  max-height: 180px;
+  min-width: 260px;
+  min-height: 180px;
+  border-radius: 12px;
+  margin-bottom: 1.2rem;
+  object-fit: cover;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  display: block;
+}
+.order-modal h3,
+.order-modal p,
+.order-modal label,
+.order-modal button,
+.order-modal input[type="number"] {
+  color: #000;
+  flex-shrink: 0;
+}
+.order-modal label {
+  color: #000;
+  font-weight: 500;
+}
+.order-modal input[type="number"] {
+  padding: 0.3rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-left: 0.5rem;
+  color: #000;
+}
+.order-modal button {
+  margin-top: 1rem;
+  padding: 0.5em 1.2em;
+  border-radius: 6px;
+  border: none;
+  background: #646cff;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.order-modal button:hover {
+  background: #535bf2;
+}

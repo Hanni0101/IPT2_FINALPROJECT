@@ -1,0 +1,90 @@
+.landing-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+}
+
+.landing-content {
+  text-align: center;
+  color: #fff;
+  padding: clamp(1rem, 4vw, 2rem);
+  width: min(90%, 800px);
+  z-index: 2;
+  transform: translateY(clamp(5%, 3vw, 15%));
+}
+
+.landing-content h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: clamp(1rem, 4vw, 2rem);
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  font-weight: bold;
+  letter-spacing: clamp(1px, 0.5vw, 2px);
+  line-height: 1.2;
+}
+
+
+.description {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+  color: #f0f0f0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2rem);
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.landing-btn {
+  flex: 0 1 auto;
+  padding: clamp(0.7em, 1.5vw, 1em) clamp(2em, 3vw, 2.5em);
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-shadow: none;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  text-align: center;
+  white-space: nowrap;
+  min-width: clamp(120px, 15vw, 160px);
+}
+
+.landing-btn.primary {
+  background: #646cff;
+  color: #fff;
+  box-shadow: 0 4px clamp(8px, 2vw, 12px) rgba(100, 108, 255, 0.3);
+}
+
+.landing-btn.secondary {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.landing-btn:hover {
+  transform: translateY(-2px);
+}
+
+.landing-btn.primary:hover {
+  background: #535bf2;
+  box-shadow: 0 6px clamp(12px, 3vw, 16px) rgba(100, 108, 255, 0.4);
+}
+
+.landing-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px clamp(12px, 3vw, 16px) rgba(0, 0, 0, 0.2);
+}

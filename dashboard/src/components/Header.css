@@ -1,0 +1,102 @@
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #000;
+  height: 10vh; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  padding: 0 clamp(0.5rem, 2vw, 2rem);
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.logo {
+  flex: 0 0 auto;
+  height: 80%;  
+  display: flex;
+  align-items: center;
+}
+
+.logo a {
+  height: 40%;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 1.5vw, 1.5rem);
+  flex-wrap: wrap;
+  padding: clamp(0.5rem, 1vw, 1rem) 0;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  white-space: nowrap;
+}
+
+.nav a:hover {
+  color: #646cff;
+}
+
+.login-btn, .logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4em 1em;
+  border-radius: 4px;
+  background: #646cff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  position: relative;
+}
+
+.login-btn:hover, .logout-btn:hover {
+  background: #535bf2;
+}
+
+.login-btn::after, .logout-btn::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+.login-btn:hover::after, .logout-btn:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.login-btn svg {
+  font-size: 1.2rem;
+}

@@ -1,0 +1,165 @@
+.login-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  overflow: hidden;
+  background: #000;
+  flex-wrap: nowrap;
+}
+
+.login-image {
+  width: 65%;
+  height: 100%;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  position: relative;
+  flex: 0 1 65%; 
+  min-width: 0; 
+}
+
+.login-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+}
+
+.login-container {
+  width: 35%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: clamp(1rem, 2vw, 2rem);
+  flex: 0 1 35%; 
+  min-width: 0;
+}
+
+.login-form {
+  width: min(100%, 350px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.4rem, 1vw, 0.8rem);
+  padding-top: 0; 
+  padding-bottom: clamp(1rem, 2vw, 1.5rem); 
+}
+
+.login-form h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: #213547;
+  text-align: center;
+  margin-top: -0.5rem; 
+  margin-bottom: clamp(0.5rem, 1vw, 0.8rem); 
+}
+
+.login-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  color: #213547;
+}
+
+.login-form input {
+  margin-top: 0.3rem;
+  padding: clamp(0.5em, 1vw, 0.8em);
+  border: 2px solid #646cff;
+  border-radius: 8px;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  background: #f8faff;
+  color: #213547;
+  transition: all 0.2s ease;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #535bf2;
+  box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.2);
+}
+
+.login-form button {
+  margin-top: clamp(1rem, 1.5vw, 1.5rem); 
+  padding: clamp(0.5em, 1.5vw, 0.7em);
+  background: #646cff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.login-form button:hover {
+  background: #535bf2;
+  transform: translateY(-1px);
+}
+
+.login-error {
+  color: #d9534f;
+  background: #ffeaea;
+  padding: clamp(0.5em, 1vw, 1em);
+  border-radius: 8px;
+  font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+  text-align: center;
+}
+
+.register-btn {
+  margin-top: clamp(0.2rem, 0.3vw, 0.3rem) !important;
+  background: #535bf2 !important;
+}
+
+.register-btn:hover {
+  background: #4347d9 !important;
+}
+
+.password-input {
+  position: relative;
+  width: 100%;
+}
+
+.password-input input {
+  width: 100%;
+  padding-right: 2.2em; 
+  box-sizing: border-box;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 0.7em;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #646cff;
+  height: 100%;
+  width: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: none;
+  border-radius: 0;
+  transition: none;
+}
+
+.password-toggle:hover,
+.password-toggle:focus {
+  color: #646cff;
+  background: transparent;
+  outline: none;
+}
+
+.password-toggle svg {
+  font-size: 1.3em;
+  pointer-events: none;
+  background: transparent;
+  border-radius: 0;
+}

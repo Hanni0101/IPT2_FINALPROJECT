@@ -1,0 +1,105 @@
+.manage-users {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.manage-users-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: clamp(0.3rem, 0.5vw, 0.5rem);
+  margin-bottom: clamp(0.3rem, 0.5vw, 0.5rem);
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0;
+}
+
+.manage-users-header h2 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  text-align: left;
+}
+
+.users-table-container {
+  flex: 1;
+  max-height: clamp(45vh, 65vh,65vh); 
+  overflow: auto;
+  margin-bottom: clamp(0.3rem, 0.5vw, 0.5rem);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+  border-radius: clamp(4px, 0.5vw, 8px) !important;
+}
+
+.MuiTableHead-root .MuiTableCell-root {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: clamp(0.5rem, 0.8vw, 0.75rem) clamp(0.5rem, 0.8vw, 0.75rem);
+  font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+}
+
+.MuiTableCell-root {
+  padding: clamp(0.5rem, 0.8vw, 0.75rem) clamp(0.5rem, 0.8vw, 0.75rem) !important;
+  font-size: clamp(0.75rem, 1.2vw, 0.875rem) !important;
+}
+
+.MuiTableBody-root .MuiTableRow-root:hover {
+  background-color: rgba(100, 108, 255, 0.04);
+}
+
+.MuiIconButton-root {
+  margin-left: clamp(0.2rem, 0.5vw, 0.5rem);
+  padding: clamp(0.2rem, 0.4vw, 0.4rem);
+}
+
+.MuiTablePagination-root {
+  min-height: unset;
+  height: auto;
+  flex-shrink: 0;
+  font-size: clamp(0.7rem, 1.2vw, 0.875rem);
+  padding-top: clamp(0.3rem, 0.5vw, 0.5rem);
+}
+
+.MuiTablePagination-selectLabel,
+.MuiTablePagination-displayedRows,
+.MuiTablePagination-select {
+  font-size: inherit;
+}
+
+.MuiModal-root .MuiBox-root {
+  width: clamp(300px, 90%, 450px);
+  max-height: unset;
+  overflow-y: visible;
+  padding: clamp(1rem, 2vw, 2rem);
+  border-radius: clamp(4px, 0.5vw, 8px);
+}
+
+.MuiModal-root .MuiBox-root h2,
+.MuiModal-root .MuiBox-root .MuiTypography-h6 {
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.MuiFormControl-root {
+  margin-bottom: clamp(0.5rem, 1vw, 0.8rem) !important;
+}
+
+.MuiFormControl-root .MuiInputBase-root {
+  font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+}
+
+.MuiFormHelperText-root {
+  font-size: clamp(0.7rem, 1vw, 0.75rem);
+  margin-top: clamp(0.2rem, 0.4vw, 0.3rem);
+}
+
+.MuiModal-root .MuiButton-root {
+  font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+  padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(0.8rem, 1.6vw, 1.2rem);
+}

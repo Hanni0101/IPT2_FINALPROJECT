@@ -1,0 +1,16 @@
+.main-landing-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f8f8f8;
+  width: 100%;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
