@@ -14,7 +14,7 @@ app.use(express.json())
 //   .then(() => console.log('Connected to MongoDB'))
 //   .catch(err => console.error('MongoDB connection error:', err))
 
-mongoose.connect("mongodb+srv://Hannro:HannroDB1@ipt2.ewsjgo5.mongodb.net/Sizzle?retryWrites=true&w=majority&appName=IPT2")
+mongoose.connect("mongodb+srv://hannromon_db_user:HannroDB01@hanncluster.ard7zb2.mongodb.net/Sizzle?retryWrites=true&w=majority")
   .then(() => console.log('MongoDB connected!'))
   .catch(err => console.error('MongoDB connection error:', err));
 
@@ -110,7 +110,7 @@ app.post('/api/menu', upload.single('Photo'), async (req, res) => {
     const { Name, Description, Price } = req.body
     const Photo = req.file ? `/uploads/${req.file.filename}` : ''
     const menuItem = new Menu({ Name, Description, Price, Photo })
-    await menuItem.save()
+    await menuItem.save()  // ← This saves to MongoDB Atlas
     res.status(201).json(menuItem)
   } catch (error) {
     res.status(400).json({ error: error.message })
