@@ -1,14 +1,5 @@
 {
   "version": 2,
   "buildCommand": "cd dashboard && npm install && npm run build",
-  "outputDirectory": "dashboard/dist",
-  "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "index.html"
-    }
-  ]
+  "outputDirectory": "dashboard/dist"
 }
