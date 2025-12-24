@@ -2,14 +2,10 @@
   "name": "sizzle-app",
   "version": "1.0.0",
   "description": "Sizzle Restaurant App",
+  "private": true,
   "scripts": {
     "dev": "concurrently \"cd dashboard && npm run dev\" \"cd server && npm run start\"",
-    "build": "cd dashboard && npm install && npm run build && cd ../server && npm install && npm run build",
-    "build:dashboard": "cd dashboard && npm run build",
-    "build:server": "cd server && npm run build",
     "install:all": "npm install && cd dashboard && npm install && cd ../server && npm install"
-  },
-  "devDependencies": {
-    "concurrently": "^8.2.2"
   }
 }
+
