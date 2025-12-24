@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import './Header.css'
-import sizzleLogo from '../assets/sizzle.png'
+import sizzleLogo from '../assets/SIZZLE.png'
 import LoginIcon from '@mui/icons-material/Login'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
