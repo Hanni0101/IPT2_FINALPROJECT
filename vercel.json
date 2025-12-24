@@ -3,13 +3,5 @@
   "buildCommand": "npm install && cd dashboard && npm install && npm run build && cd ../server && npm install",
   "outputDirectory": "dashboard/dist",
   "cleanUrls": true,
-  "trailingSlash": false,
-  "functions": {
-    "server/index.js": {
-      "runtime": "@vercel/node@3.1.0"
-    }
-  },
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/server" }
-  ]
+  "trailingSlash": false
 }
