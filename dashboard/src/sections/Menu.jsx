@@ -8,8 +8,10 @@ function Menu({ user }) {
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [quantity, setQuantity] = useState(1)
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+
   useEffect(() => {
-    fetch('http://localhost:5000/api/menu')
+    fetch(`${API_URL}/menu`)
       .then(res => res.json())
       .then(data => {
         setProducts(data)
@@ -46,7 +48,7 @@ function Menu({ user }) {
                 <img
                   src={
                     typeof product.Photo === 'string' && product.Photo.startsWith('/uploads/')
-                      ? `http://localhost:5000${product.Photo}`
+                      ? `${API_URL.replace('/api', '')}${product.Photo}`
                       : product.Photo
                   }
                   alt={product.Name}
@@ -79,7 +81,7 @@ function Menu({ user }) {
               <img
                 src={
                   typeof selectedProduct.Photo === 'string' && selectedProduct.Photo.startsWith('/uploads/')
-                    ? `http://localhost:5000${selectedProduct.Photo}`
+                    ? `${API_URL.replace('/api', '')}${selectedProduct.Photo}`
                     : selectedProduct.Photo
                 }
                 alt={selectedProduct.Name}
