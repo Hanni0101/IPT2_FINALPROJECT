@@ -39,7 +39,7 @@ function ManageUsers({ user, setUser }) {
   const [password, setPassword] = useState('')
   const [formErrors, setFormErrors] = useState({})
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
   const modalStyle = {
     position: 'absolute',
@@ -60,7 +60,7 @@ function ManageUsers({ user, setUser }) {
   const fetchUsers = async () => {
     setLoading(true)
     try {
-      const response = await fetch(`${API_URL}/users`)
+      const response = await fetch(`${API_URL}/api/users`)
       if (!response.ok) throw new Error('Failed to fetch users')
       const data = await response.json()
       setUsers(data)
@@ -134,7 +134,7 @@ function ManageUsers({ user, setUser }) {
       let response
       
       if (modalMode === 'add') {
-        response = await fetch(`${API_URL}/users`, {
+        response = await fetch(`${API_URL}/api/users`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -142,7 +142,7 @@ function ManageUsers({ user, setUser }) {
           body: JSON.stringify(userData)
         })
       } else {
-        response = await fetch(`${API_URL}/users/${selectedUser._id}`, {
+        response = await fetch(`${API_URL}/api/users/${selectedUser._id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -168,7 +168,7 @@ function ManageUsers({ user, setUser }) {
     if (!confirm('Are you sure you want to delete this user?')) return
     
     try {
-      const response = await fetch(`${API_URL}/users/${userId}`, {
+      const response = await fetch(`${API_URL}/api/users/${userId}`, {
         method: 'DELETE'
       })
       

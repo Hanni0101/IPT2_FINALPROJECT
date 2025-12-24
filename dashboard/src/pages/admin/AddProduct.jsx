@@ -39,7 +39,7 @@ function AddProduct({ user, setUser }) {
   const [price, setPrice] = useState('')
   const [photo, setPhoto] = useState('')
   const [formErrors, setFormErrors] = useState({})
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
   const modalStyle = {
     position: 'absolute',
     top: '50%',
@@ -61,7 +61,7 @@ function AddProduct({ user, setUser }) {
   const fetchProducts = async () => {
     setLoading(true)
     try {
-      const response = await fetch(`${API_URL}/menu`)
+      const response = await fetch(`${API_URL}/api/menu`)
       if (!response.ok) throw new Error('Failed to fetch products')
       const data = await response.json()
       setProducts(data)
@@ -125,7 +125,7 @@ function AddProduct({ user, setUser }) {
     try {
       let response
       if (modalMode === 'add') {
-        response = await fetch(`${API_URL}/menu`, {
+        response = await fetch(`${API_URL}/api/menu`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -133,7 +133,7 @@ function AddProduct({ user, setUser }) {
           body: JSON.stringify(productData)
         })
       } else {
-        response = await fetch(`${API_URL}/menu/${selectedProduct._id}`, {
+        response = await fetch(`${API_URL}/api/menu/${selectedProduct._id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -155,7 +155,7 @@ function AddProduct({ user, setUser }) {
   const handleDeleteProduct = async (productId) => {
     if (!window.confirm('Are you sure you want to delete this product?')) return
     try {
-      const response = await fetch(`${API_URL}/menu/${productId}`, {
+      const response = await fetch(`${API_URL}/api/menu/${productId}`, {
         method: 'DELETE'
       })
       if (!response.ok) throw new Error('Failed to delete product')

@@ -2,8 +2,6 @@ import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import dotenv from 'dotenv'
-import { fileURLToPath } from 'url'
-import { dirname, join } from 'path'
 import User from './models/users.js'
 import Menu from './models/menu.js'
 
@@ -15,12 +13,27 @@ app.use(express.json())
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://hannromon_db_user:HannroDB01@hanncluster.ard7zb2.mongodb.net/Sizzle?retryWrites=true&w=majority"
 
-mongoose.connect(MONGODB_URI)
-  .then(() => console.log('MongoDB connected!'))
-  .catch(err => console.error('MongoDB connection error:', err));
+let isConnected = false
 
+const connectDB = async () => {
+  if (isConnected) return
+  try {
+    await mongoose.connect(MONGODB_URI)
+    isConnected = true
+    console.log('MongoDB connected!')
+  } catch (err) {
+    console.error('MongoDB connection error:', err)
+    throw err
+  }
+}
+
+// Ensure DB connection
+connectDB().catch(console.error)
+
+// USERS ROUTES
 app.post('/users', async (req, res) => {
   try {
+    await connectDB()
     const { Name, Email, Password } = req.body
     if (!Name || !Email || !Password) {
       return res.status(400).json({ error: 'All fields are required' })
@@ -35,6 +48,7 @@ app.post('/users', async (req, res) => {
 
 app.get('/users', async (req, res) => {
   try {
+    await connectDB()
     const users = await User.find()
     res.json(users)
   } catch (error) {
@@ -44,6 +58,7 @@ app.get('/users', async (req, res) => {
 
 app.put('/users/:id', async (req, res) => {
   try {
+    await connectDB()
     const { id } = req.params
     const userData = req.body
     
@@ -69,6 +84,7 @@ app.put('/users/:id', async (req, res) => {
 
 app.delete('/users/:id', async (req, res) => {
   try {
+    await connectDB()
     const { id } = req.params
     const deletedUser = await User.findByIdAndDelete(id)
     
@@ -84,6 +100,7 @@ app.delete('/users/:id', async (req, res) => {
 
 app.post('/users/register', async (req, res) => {
   try {
+    await connectDB()
     const { name, email, password } = req.body
     if (!name || !email || !password) {
       return res.status(400).json({ message: 'All fields are required' })
@@ -100,8 +117,10 @@ app.post('/users/register', async (req, res) => {
   }
 })
 
+// MENU ROUTES
 app.post('/menu', async (req, res) => {
   try {
+    await connectDB()
     const { Name, Description, Price, Photo } = req.body
     if (!Name || !Description || !Price || !Photo) {
       return res.status(400).json({ error: 'All fields are required' })
@@ -116,6 +135,7 @@ app.post('/menu', async (req, res) => {
 
 app.get('/menu', async (req, res) => {
   try {
+    await connectDB()
     const menuItems = await Menu.find()
     res.json(menuItems)
   } catch (error) {
@@ -125,6 +145,7 @@ app.get('/menu', async (req, res) => {
 
 app.put('/menu/:id', async (req, res) => {
   try {
+    await connectDB()
     const { id } = req.params
     const { Name, Description, Price, Photo } = req.body
     const updateData = { Name, Description, Price, Photo }
@@ -138,6 +159,7 @@ app.put('/menu/:id', async (req, res) => {
 
 app.delete('/menu/:id', async (req, res) => {
   try {
+    await connectDB()
     const { id } = req.params
     const deletedMenuItem = await Menu.findByIdAndDelete(id)
     

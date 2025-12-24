@@ -11,7 +11,7 @@ function Login({ setUser }) {
   const [error, setError] = useState('')
   const navigate = useNavigate()
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
   const handleLogin = (e) => {
     e.preventDefault()
@@ -42,7 +42,7 @@ function Login({ setUser }) {
       return
     }
     try {
-      const res = await fetch(`${API_URL}/users/register`, {
+      const res = await fetch(`${API_URL}/api/users/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password })
