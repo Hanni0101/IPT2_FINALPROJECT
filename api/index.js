@@ -1,9 +1,11 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
-import User from '../server/models/users.js'
-import Menu from '../server/models/menu.js'
 import dotenv from 'dotenv'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
+import User from './models/users.js'
+import Menu from './models/menu.js'
 
 dotenv.config()
 
