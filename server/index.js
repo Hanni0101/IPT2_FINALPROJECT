@@ -18,7 +18,26 @@ mongoose.connect("mongodb+srv://hannromon_db_user:HannroDB01@hanncluster.ard7zb2
   .then(() => console.log('MongoDB connected!'))
   .catch(err => console.error('MongoDB connection error:', err));
 
+// Create default admin account
+// const createAdminUser = async () => {
+//   try {
+//     const adminExists = await User.findOne({ Email: 'admin@sizzle.com' })
+//     if (!adminExists) {
+//       const admin = new User({
+//         Name: 'Admin',
+//         Email: 'admin@sizzle.com',
+//         Password: 'Admin@1234',
+//         Role: 'admin'
+//       })
+//       await admin.save()
+//       console.log('✅ Default admin account created')
+//     }
+//   } catch (error) {
+//     console.error('Error creating admin:', error)
+//   }
+// }
 
+// createAdminUser()
 
 app.post('/api/users', async (req, res) => {
   try {
