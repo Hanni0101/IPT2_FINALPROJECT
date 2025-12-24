@@ -12,7 +12,6 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   padding: 0 clamp(0.5rem, 2vw, 2rem);
   box-sizing: border-box;
-  flex-wrap: wrap;
   gap: 1rem;
 }
 
@@ -35,12 +34,27 @@
   object-fit: contain;
 }
 
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger svg {
+  width: 28px;
+  height: 28px;
+}
+
 .nav {
   display: flex;
   align-items: center;
   gap: clamp(0.5rem, 1.5vw, 1.5rem);
-  flex-wrap: wrap;
-  padding: clamp(0.5rem, 1vw, 1rem) 0;
   flex: 1;
   justify-content: flex-end;
 }
@@ -50,6 +64,8 @@
   text-decoration: none;
   font-size: clamp(0.9rem, 1vw, 1rem);
   white-space: nowrap;
+  transition: color 0.3s ease;
+  cursor: pointer;
 }
 
 .nav a:hover {
@@ -69,6 +85,7 @@
   text-decoration: none;
   font-size: clamp(0.9rem, 1vw, 1rem);
   position: relative;
+  transition: background 0.3s ease;
 }
 
 .login-btn:hover, .logout-btn:hover {
@@ -97,6 +114,86 @@
   visibility: visible;
 }
 
-.login-btn svg {
+.login-btn svg,
+.logout-btn svg {
   font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav {
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    right: 0;
+    background: #000;
+    flex-direction: column;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav.active {
+    max-height: 500px;
+  }
+
+  .nav a,
+  .nav button,
+  .nav .login-btn,
+  .nav .logout-btn {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-radius: 0;
+    border-bottom: 1px solid #333;
+    box-sizing: border-box;
+  }
+
+  .nav a {
+    display: block;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .nav .login-btn,
+  .nav .logout-btn {
+    background: #646cff;
+    justify-content: flex-start;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .nav .login-btn:hover,
+  .nav .logout-btn:hover {
+    background: #535bf2;
+  }
+
+  .nav .login-btn::after,
+  .nav .logout-btn::after {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0 1rem;
+  }
+
+  .nav a,
+  .nav button,
+  .nav .login-btn,
+  .nav .logout-btn {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .nav.active {
+    max-height: 600px;
+  }
 }

@@ -2,15 +2,33 @@ import { Link, useNavigate } from 'react-router-dom'
 import './Header.css'
 import sizzleLogo from '../assets/sizzle.png'
 import LoginIcon from '@mui/icons-material/Login'
-import React from 'react'
+import MenuIcon from '@mui/icons-material/Menu'
+import CloseIcon from '@mui/icons-material/Close'
+import React, { useState } from 'react'
 
 function Header({ user, setUser }) {
   const navigate = useNavigate()
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const handleLogout = () => {
     setUser(null)
     localStorage.removeItem('user')
     navigate('/')
+    setMenuOpen(false)
+  }
+
+  const handleNavClick = (id) => {
+    setMenuOpen(false)
+    // Prevent default link behavior
+    event.preventDefault()
+    
+    // Smooth scroll to section
+    setTimeout(() => {
+      const element = document.querySelector(id)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }, 50)
   }
 
   React.useEffect(() => {
@@ -27,13 +45,18 @@ function Header({ user, setUser }) {
           <img src={sizzleLogo} alt="SIZZLE Restaurant" />
         </Link>
       </div>
-      <nav className="nav">
+      
+      <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+        {menuOpen ? <CloseIcon /> : <MenuIcon />}
+      </button>
+
+      <nav className={`nav ${menuOpen ? 'active' : ''}`}>
         {!user && (
           <>
-            <a href="#about">About</a>
-            <a href="#location">Location</a>
-            <a href="#menu">Menu</a>
-            <a href="#social">Social Media</a>
+            <a href="#about" onClick={() => handleNavClick('#about')}>About</a>
+            <a href="#location" onClick={() => handleNavClick('#location')}>Location</a>
+            <a href="#menu" onClick={() => handleNavClick('#menu')}>Menu</a>
+            <a href="#social" onClick={() => handleNavClick('#social')}>Social Media</a>
             <Link to="/login" className="login-btn" data-tooltip="Login Account">
               <LoginIcon /> 
             </Link>
@@ -42,10 +65,10 @@ function Header({ user, setUser }) {
         
         {user && user.role === 'user' && (
           <>
-            <a href="#about">About</a>
-            <a href="#location">Location</a>
-            <a href="#menu">Menu</a>
-            <a href="#social">Social Media</a>
+            <a href="#about" onClick={() => handleNavClick('#about')}>About</a>
+            <a href="#location" onClick={() => handleNavClick('#location')}>Location</a>
+            <a href="#menu" onClick={() => handleNavClick('#menu')}>Menu</a>
+            <a href="#social" onClick={() => handleNavClick('#social')}>Social Media</a>
             <button onClick={handleLogout} className="logout-btn" data-tooltip="Logout">
               <LoginIcon />
             </button>
@@ -54,9 +77,9 @@ function Header({ user, setUser }) {
         
         {user && user.role === 'admin' && (
           <>
-            <Link to="/admin">Dashboard</Link>
-            <Link to="/admin/manage-users">Manage Users</Link>
-            <Link to="/admin/add-product">Add Product</Link>
+            <Link to="/admin" onClick={() => setMenuOpen(false)}>Dashboard</Link>
+            <Link to="/admin/manage-users" onClick={() => setMenuOpen(false)}>Manage Users</Link>
+            <Link to="/admin/add-product" onClick={() => setMenuOpen(false)}>Add Product</Link>
             <button onClick={handleLogout} className="logout-btn" data-tooltip="Logout">
                  <LoginIcon />
             </button>
