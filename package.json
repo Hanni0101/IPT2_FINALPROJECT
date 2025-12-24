@@ -5,7 +5,11 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"cd dashboard && npm run dev\" \"cd server && npm run start\"",
+    "build": "cd dashboard && npm install && npm run build",
     "install:all": "npm install && cd dashboard && npm install && cd ../server && npm install"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
 
