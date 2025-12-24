@@ -6,15 +6,23 @@ function AdminPage({ user, setUser }) {
   const [userCount, setUserCount] = useState(0)
   const [productCount, setProductCount] = useState(0)
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+
   useEffect(() => {
-    fetch('http://localhost:5000/api/users')
+    fetch(`${API_URL}/api/users`)
       .then(res => res.json())
       .then(data => setUserCount(Array.isArray(data) ? data.length : 0))
-      .catch(() => setUserCount(0))
-    fetch('http://localhost:5000/api/menu')
+      .catch(err => {
+        console.error('Error fetching users:', err)
+        setUserCount(0)
+      })
+    fetch(`${API_URL}/api/menu`)
       .then(res => res.json())
       .then(data => setProductCount(Array.isArray(data) ? data.length : 0))
-      .catch(() => setProductCount(0))
+      .catch(err => {
+        console.error('Error fetching menu:', err)
+        setProductCount(0)
+      })
   }, [])
 
   return (

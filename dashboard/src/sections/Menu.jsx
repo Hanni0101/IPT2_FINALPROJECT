@@ -8,15 +8,18 @@ function Menu({ user }) {
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [quantity, setQuantity] = useState(1)
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
   useEffect(() => {
-    fetch(`${API_URL}/menu`)
+    fetch(`${API_URL}/api/menu`)
       .then(res => res.json())
       .then(data => {
         setProducts(data)
       })
-      .catch(() => setProducts([]))
+      .catch(err => {
+        console.error('Error fetching menu:', err)
+        setProducts([])
+      })
   }, [])
 
   const openOrderModal = (product) => {
