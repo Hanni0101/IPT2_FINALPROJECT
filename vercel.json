@@ -3,5 +3,13 @@
   "buildCommand": "cd dashboard && npm install && npm run build",
   "outputDirectory": "dashboard/dist",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "functions": {
+    "server/index.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/server?__nextUrl=$1" }
+  ]
 }
