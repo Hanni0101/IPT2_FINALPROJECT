@@ -3,11 +3,5 @@
   "buildCommand": "npm install && cd dashboard && npm install && npm run build",
   "outputDirectory": "dashboard/dist",
   "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api"
-    }
-  ]
+  "trailingSlash": false
 }

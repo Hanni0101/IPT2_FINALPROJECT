@@ -27,11 +27,11 @@ const connectDB = async () => {
   }
 }
 
-// Ensure DB connection
+// Ensure DB connection on startup
 connectDB().catch(console.error)
 
 // USERS ROUTES
-app.post('/users', async (req, res) => {
+app.post('/api/users', async (req, res) => {
   try {
     await connectDB()
     const { Name, Email, Password } = req.body
@@ -46,7 +46,7 @@ app.post('/users', async (req, res) => {
   }
 })
 
-app.get('/users', async (req, res) => {
+app.get('/api/users', async (req, res) => {
   try {
     await connectDB()
     const users = await User.find()
@@ -56,7 +56,7 @@ app.get('/users', async (req, res) => {
   }
 })
 
-app.put('/users/:id', async (req, res) => {
+app.put('/api/users/:id', async (req, res) => {
   try {
     await connectDB()
     const { id } = req.params
@@ -82,7 +82,7 @@ app.put('/users/:id', async (req, res) => {
   }
 })
 
-app.delete('/users/:id', async (req, res) => {
+app.delete('/api/users/:id', async (req, res) => {
   try {
     await connectDB()
     const { id } = req.params
@@ -98,7 +98,7 @@ app.delete('/users/:id', async (req, res) => {
   }
 })
 
-app.post('/users/register', async (req, res) => {
+app.post('/api/users/register', async (req, res) => {
   try {
     await connectDB()
     const { name, email, password } = req.body
@@ -118,7 +118,7 @@ app.post('/users/register', async (req, res) => {
 })
 
 // MENU ROUTES
-app.post('/menu', async (req, res) => {
+app.post('/api/menu', async (req, res) => {
   try {
     await connectDB()
     const { Name, Description, Price, Photo } = req.body
@@ -133,7 +133,7 @@ app.post('/menu', async (req, res) => {
   }
 })
 
-app.get('/menu', async (req, res) => {
+app.get('/api/menu', async (req, res) => {
   try {
     await connectDB()
     const menuItems = await Menu.find()
@@ -143,7 +143,7 @@ app.get('/menu', async (req, res) => {
   }
 })
 
-app.put('/menu/:id', async (req, res) => {
+app.put('/api/menu/:id', async (req, res) => {
   try {
     await connectDB()
     const { id } = req.params
@@ -157,7 +157,7 @@ app.put('/menu/:id', async (req, res) => {
   }
 })
 
-app.delete('/menu/:id', async (req, res) => {
+app.delete('/api/menu/:id', async (req, res) => {
   try {
     await connectDB()
     const { id } = req.params
@@ -171,6 +171,10 @@ app.delete('/menu/:id', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
+})
+
+app.use((req, res) => {
+  res.status(404).json({ error: 'Route not found' })
 })
 
 export default app
