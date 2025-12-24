@@ -38,7 +38,6 @@ function AddProduct({ user, setUser }) {
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
   const [photo, setPhoto] = useState('')
-  const [photoFile, setPhotoFile] = useState(null)
   const [formErrors, setFormErrors] = useState({})
   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
   const modalStyle = {
@@ -82,14 +81,12 @@ function AddProduct({ user, setUser }) {
       setDescription(product.Description)
       setPrice(product.Price)
       setPhoto(product.Photo)
-      setPhotoFile(null)
     } else {
       setSelectedProduct(null)
       setName('')
       setDescription('')
       setPrice('')
       setPhoto('')
-      setPhotoFile(null)
     }
     setOpen(true)
   }
@@ -100,13 +97,7 @@ function AddProduct({ user, setUser }) {
   }
 
   const handlePhotoChange = (e) => {
-    const file = e.target.files[0]
-    setPhotoFile(file)
-    if (file) {
-      setPhoto(URL.createObjectURL(file))
-    } else {
-      setPhoto('')
-    }
+    setPhoto(e.target.value)
   }
 
   const validateForm = () => {
@@ -116,7 +107,7 @@ function AddProduct({ user, setUser }) {
     else if (/^\d+$/.test(description)) errors.description = 'Description must not be only numbers'
     if (!price) errors.price = 'Price is required'
     else if (isNaN(price) || Number(price) <= 0) errors.price = 'Price must be a positive number'
-    if (modalMode === 'add' && !photoFile) errors.photo = 'Photo is required'
+    if (!photo) errors.photo = 'Photo URL is required'
     setFormErrors(errors)
     return Object.keys(errors).length === 0
   }
@@ -124,23 +115,30 @@ function AddProduct({ user, setUser }) {
   const handleSubmit = async () => {
     if (!validateForm()) return
 
-    const formData = new FormData()
-    formData.append('Name', name)
-    formData.append('Description', description)
-    formData.append('Price', price)
-    if (photoFile) formData.append('Photo', photoFile)
+    const productData = {
+      Name: name,
+      Description: description,
+      Price: parseFloat(price),
+      Photo: photo
+    }
 
     try {
       let response
       if (modalMode === 'add') {
         response = await fetch(`${API_URL}/menu`, {
           method: 'POST',
-          body: formData
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(productData)
         })
       } else {
         response = await fetch(`${API_URL}/menu/${selectedProduct._id}`, {
           method: 'PUT',
-          body: formData
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(productData)
         })
       }
       if (!response.ok) {
@@ -298,19 +296,14 @@ function AddProduct({ user, setUser }) {
             {formErrors.price && <FormHelperText>{formErrors.price}</FormHelperText>}
           </FormControl>
           <FormControl fullWidth margin="normal" error={!!formErrors.photo}>
-            <Button
+            <TextField
+              label="Photo URL"
               variant="outlined"
-              component="label"
-              sx={{ textTransform: 'none' }}
-            >
-              {photoFile ? photoFile.name : 'Choose Photo'}
-              <input
-                type="file"
-                accept="image/*"
-                hidden
-                onChange={handlePhotoChange}
-              />
-            </Button>
+              value={photo}
+              onChange={handlePhotoChange}
+              fullWidth
+              placeholder="https://example.com/image.jpg"
+            />
             {formErrors.photo && <FormHelperText>{formErrors.photo}</FormHelperText>}
           </FormControl>
           <Box mt={3} display="flex" justifyContent="flex-end" gap={2}>

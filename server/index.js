@@ -42,7 +42,11 @@ mongoose.connect(MONGODB_URI)
 
 app.post('/api/users', async (req, res) => {
   try {
-    const user = new User(req.body)
+    const { Name, Email, Password } = req.body
+    if (!Name || !Email || !Password) {
+      return res.status(400).json({ error: 'All fields are required' })
+    }
+    const user = new User({ Name, Email, Password })
     await user.save()
     res.status(201).json(user)
   } catch (error) {
@@ -125,12 +129,14 @@ const upload = multer({ storage })
 
 if (!fs.existsSync('uploads')) fs.mkdirSync('uploads')
 
-app.post('/api/menu', upload.single('Photo'), async (req, res) => {
+app.post('/api/menu', async (req, res) => {
   try {
-    const { Name, Description, Price } = req.body
-    const Photo = req.file ? `/uploads/${req.file.filename}` : ''
+    const { Name, Description, Price, Photo } = req.body
+    if (!Name || !Description || !Price || !Photo) {
+      return res.status(400).json({ error: 'All fields are required' })
+    }
     const menuItem = new Menu({ Name, Description, Price, Photo })
-    await menuItem.save()  // ← This saves to MongoDB Atlas
+    await menuItem.save()
     res.status(201).json(menuItem)
   } catch (error) {
     res.status(400).json({ error: error.message })
@@ -146,12 +152,11 @@ app.get('/api/menu', async (req, res) => {
   }
 })
 
-app.put('/api/menu/:id', upload.single('Photo'), async (req, res) => {
+app.put('/api/menu/:id', async (req, res) => {
   try {
     const { id } = req.params
-    const { Name, Description, Price } = req.body
-    const updateData = { Name, Description, Price }
-    if (req.file) updateData.Photo = `/uploads/${req.file.filename}`
+    const { Name, Description, Price, Photo } = req.body
+    const updateData = { Name, Description, Price, Photo }
     const updated = await Menu.findByIdAndUpdate(id, updateData, { new: true, runValidators: true })
     if (!updated) return res.status(404).json({ error: 'Product not found' })
     res.json(updated)
