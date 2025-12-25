@@ -134,13 +134,13 @@
     flex-direction: column;
     gap: 0;
     max-height: 0;
-    overflow: hidden;
+    overflow-y: auto;
     transition: max-height 0.3s ease-out;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 
   .nav.active {
-    max-height: 500px;
+    max-height: 280px;
   }
 
   .nav a,
@@ -148,12 +148,12 @@
   .nav .login-btn,
   .nav .logout-btn {
     width: 100%;
-    padding: 1.4rem 1.5rem;
+    padding: 1.1rem 1.5rem;
     text-align: left;
     border-radius: 0;
     border-bottom: 1px solid #333;
     box-sizing: border-box;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
 
   .nav a {
@@ -168,7 +168,7 @@
     justify-content: flex-start;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
 
   .nav .login-btn:hover,
@@ -188,15 +188,19 @@
     height: 12vh;
   }
 
+  .nav {
+    top: 12vh;
+  }
+
   .nav a,
   .nav button,
   .nav .login-btn,
   .nav .logout-btn {
-    font-size: 1.2rem;
-    padding: 1.2rem 1rem;
+    font-size: 1.1rem;
+    padding: 0.9rem 1rem;
   }
 
   .nav.active {
-    max-height: 600px;
+    max-height: 260px;
   }
 }
