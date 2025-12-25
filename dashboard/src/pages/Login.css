@@ -66,53 +66,55 @@
 @media (max-width: 768px) {
   .login-page {
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding-top: 10vh;
   }
   
   .login-image {
-    display: none;
-    width: 0;
-    height: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
     flex: none;
+    z-index: 0;
   }
   
   .login-image::after {
-    display: none;
+    background: rgba(0, 0, 0, 0.48);
   }
   
   .login-container {
-    width: 100%;
-    height: 100%;
-    flex: 1;
-    background: rgba(255, 255, 255, 0.99);
-    padding: clamp(1.5rem, 3vw, 2rem);
-    align-items: center;
-    justify-content: center;
-    box-shadow: none;
+    position: relative;
+    width: clamp(280px, 90%, 420px);
+    height: auto;
+    flex: none;
+    background: rgba(255, 255, 255, 0.96);
+    padding: clamp(2rem, 5vw, 2.5rem);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    z-index: 10;
   }
 }
 
 @media (max-width: 480px) {
   .login-page {
-    padding-top: 12vh;
+    padding-top: 0;
   }
   
   .login-image {
-    display: none;
-    width: 0;
-    height: 0;
-    flex: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .login-image::after {
+    background: rgba(0, 0, 0, 0.5);
   }
   
   .login-container {
-    width: 100%;
-    height: auto;
-    min-height: calc(100vh - 12vh);
-    flex: 1;
-    background: rgba(255, 255, 255, 0.99);
-    padding: 2rem 1rem;
-    align-items: center;
-    justify-content: center;
+    width: clamp(250px, 85%, 380px);
+    padding: clamp(1.5rem, 4vw, 2.2rem);
+    border-radius: 10px;
   }
 }
 
