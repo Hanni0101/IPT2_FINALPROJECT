@@ -10,6 +10,8 @@
   box-sizing: border-box;
   margin: 0;
   position: relative;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .landing-content {
@@ -17,8 +19,10 @@
   color: #fff;
   padding: clamp(1rem, 4vw, 2rem);
   width: min(90%, 800px);
+  max-width: 100vw;
   z-index: 2;
   transform: translateY(clamp(5%, 3vw, 15%));
+  box-sizing: border-box;
 }
 
 .landing-content h1 {
@@ -46,13 +50,18 @@
   flex-wrap: wrap;
   gap: clamp(0.75rem, 3vw, 2rem);
   justify-content: center;
-  width: fit-content;
+  width: 100%;
+  max-width: 100vw;
   margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 clamp(0.5rem, 2vw, 1rem);
 }
 
 .landing-btn {
-  flex: 0 1 auto;
-  padding: clamp(0.7em, 1.5vw, 1em) clamp(2em, 3vw, 2.5em);
+  flex: 1;
+  min-width: clamp(100px, 40vw, 160px);
+  max-width: 100%;
+  padding: clamp(0.7em, 1.5vw, 1em) clamp(1em, 3vw, 2.5em);
   border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
@@ -61,16 +70,19 @@
   font-size: clamp(0.9rem, 1.5vw, 1rem);
   text-align: center;
   white-space: normal;
-  min-width: clamp(100px, 15vw, 160px);
+  box-sizing: border-box;
 }
 
 @media (max-width: 600px) {
   .cta-buttons {
     flex-direction: column;
-    width: 90%;
+    width: 100%;
+    padding: 0 1rem;
   }
   
   .landing-btn {
+    flex: 1 1 100%;
+    min-width: 100%;
     width: 100%;
   }
 }

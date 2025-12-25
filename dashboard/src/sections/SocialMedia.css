@@ -2,6 +2,26 @@
   text-align: center;
   padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 2vw, 1.5rem);
   background: #213547;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.social-section h2 {
+  color: #fff;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0 0 0.5rem 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.social-section p {
+  color: #fff;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .social-icons {
@@ -10,6 +30,8 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: clamp(1.5rem, 3vw, 2rem);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .social-icons a {
@@ -17,7 +39,9 @@
   transition: color 0.2s;
   display: flex;
   align-items: center;
+  justify-content: center;
   font-size: clamp(1.5rem, 3vw, 2rem);
+  flex-shrink: 0;
 }
 
 .social-icons a:hover {
@@ -27,6 +51,11 @@
 @media (max-width: 480px) {
   .social-section {
     padding: 1.5rem 1rem;
+  }
+  
+  .social-section h2,
+  .social-section p {
+    word-break: break-word;
   }
   
   .social-icons {
