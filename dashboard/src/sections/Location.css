@@ -15,7 +15,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: clamp(1rem, 4vw, 3rem);
+  padding: clamp(0.75rem, 2vw, 2rem);
   gap: clamp(1rem, 4vw, 4rem);
   align-items: stretch;
   box-sizing: border-box;
@@ -25,14 +25,14 @@
 @media (max-width: 768px) {
   .location-container {
     flex-direction: column;
-    padding: clamp(1rem, 3vw, 2rem);
-    gap: clamp(1.5rem, 3vw, 2rem);
+    padding: clamp(0.75rem, 2vw, 1.5rem);
+    gap: clamp(1.5rem, 2vw, 1.5rem);
   }
 }
 
 @media (max-width: 480px) {
   .location-container {
-    padding: 1rem 0.75rem;
+    padding: 0.75rem;
     gap: 1rem;
   }
 }

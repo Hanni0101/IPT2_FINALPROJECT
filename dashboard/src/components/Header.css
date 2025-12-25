@@ -148,11 +148,12 @@
   .nav .login-btn,
   .nav .logout-btn {
     width: 100%;
-    padding: 1rem 1.5rem;
+    padding: 1.2rem 1.5rem;
     text-align: left;
     border-radius: 0;
     border-bottom: 1px solid #333;
     box-sizing: border-box;
+    font-size: 1.1rem;
   }
 
   .nav a {
@@ -167,6 +168,7 @@
     justify-content: flex-start;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+    font-size: 1.1rem;
   }
 
   .nav .login-btn:hover,
@@ -189,8 +191,8 @@
   .nav button,
   .nav .login-btn,
   .nav .logout-btn {
-    font-size: 1rem;
-    padding: 0.75rem 1rem;
+    font-size: 1.05rem;
+    padding: 1rem 1.2rem;
   }
 
   .nav.active {
