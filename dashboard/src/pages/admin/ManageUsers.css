@@ -33,6 +33,27 @@
   border-radius: clamp(4px, 0.5vw, 8px) !important;
 }
 
+@media (max-width: 768px) {
+  .users-table-container {
+    max-height: 50vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .users-table-container {
+    max-height: 40vh;
+  }
+  
+  .manage-users-header {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .manage-users {
+    padding: 0.5rem;
+  }
+}
+
 .MuiTableHead-root .MuiTableCell-root {
   background-color: #f5f5f5;
   font-weight: bold;

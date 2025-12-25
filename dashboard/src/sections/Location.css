@@ -11,11 +11,26 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: clamp(2rem, 4vw, 3rem);
-  gap: clamp(2rem, 4vw, 4rem);
+  padding: clamp(1rem, 4vw, 3rem);
+  gap: clamp(1rem, 4vw, 4rem);
   align-items: stretch;
   box-sizing: border-box;
   min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .location-container {
+    flex-direction: column;
+    padding: clamp(1rem, 3vw, 2rem);
+    gap: clamp(1.5rem, 3vw, 2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .location-container {
+    padding: 1rem 0.75rem;
+    gap: 1rem;
+  }
 }
 
 .location-content {
@@ -49,16 +64,28 @@
 }
 
 .location-map {
-  flex: 2 1 320px;
+  flex: 2 1 100%;
   min-width: 0; 
   max-width: 100%;
-  height: clamp(200px, 40vw, 500px); 
+  height: clamp(200px, 50vw, 500px); 
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: stretch;
   box-sizing: border-box;
+}
+
+@media (min-width: 769px) {
+  .location-map {
+    flex: 2 1 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .location-map {
+    height: clamp(200px, 60vw, 300px);
+  }
 }
 
 .location-map iframe {

@@ -43,7 +43,8 @@
 
 .cta-buttons {
   display: flex;
-  gap: clamp(1rem, 3vw, 2rem);
+  flex-wrap: wrap;
+  gap: clamp(0.75rem, 3vw, 2rem);
   justify-content: center;
   width: fit-content;
   margin: 0 auto;
@@ -59,8 +60,19 @@
   text-shadow: none;
   font-size: clamp(0.9rem, 1.5vw, 1rem);
   text-align: center;
-  white-space: nowrap;
-  min-width: clamp(120px, 15vw, 160px);
+  white-space: normal;
+  min-width: clamp(100px, 15vw, 160px);
+}
+
+@media (max-width: 600px) {
+  .cta-buttons {
+    flex-direction: column;
+    width: 90%;
+  }
+  
+  .landing-btn {
+    width: 100%;
+  }
 }
 
 .landing-btn.primary {

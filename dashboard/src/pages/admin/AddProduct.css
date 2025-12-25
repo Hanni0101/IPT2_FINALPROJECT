@@ -63,6 +63,30 @@
   border-radius: clamp(4px, 0.5vw, 8px) !important;
 }
 
+@media (max-width: 768px) {
+  .product-table-container {
+    max-height: 50vh;
+  }
+  
+  .product-form {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-table-container {
+    max-height: 40vh;
+  }
+  
+  .add-product {
+    padding: 0.5rem;
+  }
+  
+  .product-form {
+    padding: 1rem 0.75rem;
+  }
+}
+
 .MuiTableHead-root .MuiTableCell-root {
   background-color: #f5f5f5;
   font-weight: bold;

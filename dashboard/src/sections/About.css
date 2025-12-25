@@ -22,6 +22,30 @@
   min-width: 280px;
 }
 
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    padding: clamp(1rem, 2vw, 1.5rem);
+  }
+  
+  .about-image {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+  
+  .about-content {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-container {
+    padding: 1rem 0.75rem;
+    gap: 1rem;
+  }
+}
+
 .about-image img {
   width: 100%;
   aspect-ratio: 4/5; 
